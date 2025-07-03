@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Para Mamá</title>
+  <link rel="stylesheet" href="estilos.css">
+  <link rel="shortcut icon" href="/Fotos/icono.ico" type="image/x-icon">
+</head>
+<body>
+  <header class="encabezado-elegante">
+    <h1>🌷 Te amo mamá 💖</h1>
+    <p class="subtitulo">Eres la luz de mi vida, gracias por todo tu amor.</p>
+  </header>
+
+  <main>
+    <section class="mensajes">
+      <p>Gracias por tus abrazos que curan el alma.</p>
+      <p>Por tus palabras que siempre me dan fuerza.</p>
+      <p>Por tu amor que nunca falla.</p>
+      <p>Siempre has sido mi ejemplo de fortaleza y ternura.</p>
+      <p>Gracias por darme todo sin pedir nada a cambio.</p>
+      <p>Contigo aprendí lo que significa el verdadero amor.</p>
+      <p>No hay palabras suficientes para agradecerte lo que haces cada día.</p>
+    </section>
+
+    <section class="galeria">
+      <div class="slider">
+        <button class="prev">❮</button>
+        <div class="imagenes">
+          <img src="Fotos/F1.jpg" alt="Foto 1">
+          <img src="Fotos/F2.JPG" alt="Foto 2">
+          <img src="Fotos/F3.jpg" alt="Foto 3">
+          <img src="Fotos/F4.jpg" alt="Foto 4">
+          <img src="Fotos/F5.png" alt="Foto 5">
+          <img src="Fotos/F6.jpg" alt="Foto 6">
+          <img src="Fotos/F7.jpg" alt="Foto 7">
+          <img src="Fotos/F8.jpg" alt="Foto 8">
+          <img src="Fotos/F9.jpg" alt="Foto 9">
+          <img src="Fotos/F10.jpg" alt="Foto 10">
+          <img src="Fotos/F11.jpg" alt="Foto 11">
+          <img src="Fotos/F12.jpg" alt="Foto 12">
+          <img src="Fotos/F13.jpg" alt="Foto 13">
+          <img src="Fotos/F14.jpg" alt="Foto 14">
+          <img src="Fotos/F15.jpg" alt="Foto 15">
+        </div>
+        <button class="next">❯</button>
+      </div>
+    </section>
+
+    <section class="musica">
+      <button id="play">Reproducir canción</button>
+      <button id="pause">Pausar canción</button>
+      <audio id="audio">
+        <source src="audio/musica.mp3" type="audio/mpeg">
+         No soporta el audio.
+      </audio>
+    </section>
+  
+<section class="poema">
+  <h2>Poema para Mamá 💕</h2>
+  <p><strong>C</strong>ada día contigo es un regalo.</p>
+  <p><strong>A</strong>mor incondicional que siempre has brindado.</p>
+  <p><strong>R</strong>esplandece tu luz en cada abrazo.</p>
+  <p><strong>M</strong>il razones tengo para decirte gracias.</p>
+  <p><strong>E</strong>n cada paso me guías con ternura.</p>
+  <p><strong>N</strong>unca dejaré de amarte, mamá hermosa.</p>
+</section>
+
+<div id="corazones-container"></div>
+
+</main>
+
+  <footer>
+    <p>Feliz día mamá 💐</p>
+  </footer>
+
+  <script>
+    const audio = document.getElementById('audio');
+    document.getElementById('play').addEventListener('click', () => audio.play());
+    document.getElementById('pause').addEventListener('click', () => audio.pause());
+
+    // Slider funcionalidad
+    const imagenes = document.querySelector('.imagenes');
+    const next = document.querySelector('.next');
+    const prev = document.querySelector('.prev');
+    let index = 0;
+
+    next.addEventListener('click', () => {
+      if(index < imagenes.children.length - 1) index++;
+      imagenes.style.transform = `translateX(-${index * 100}%)`;
+    });
+
+    prev.addEventListener('click', () => {
+      if(index > 0) index--;
+      imagenes.style.transform = `translateX(-${index * 100}%)`;
+    });
+
+    // Carrusel automático
+    setInterval(() => {
+      if(index < imagenes.children.length - 1) {
+        index++;
+      } else {
+        index = 0;
+      }
+      imagenes.style.transform = `translateX(-${index * 100}%)`;
+    }, 4000);
+  
+// Animación de corazones al reproducir música
+document.getElementById('play').addEventListener('click', () => {
+  for (let i = 0; i < 15; i++) {
+    const corazon = document.createElement('div');
+    corazon.classList.add('corazon');
+    corazon.style.left = Math.random() * 100 + 'vw';
+    document.getElementById('corazones-container').appendChild(corazon);
+
+    setTimeout(() => corazon.remove(), 4000);
+  }
+});
+
+</script>
+</body>
+</html>
